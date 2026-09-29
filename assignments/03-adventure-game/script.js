@@ -63,6 +63,19 @@ function render(room){
     for (let i = 0;i<room.linkedRooms.length;i++){
         let roomButton = createElementWithID("button",room.linkedRooms[i])
         roomButton.innerHTML = rooms[room.linkedRooms[i]].label;
+        if (room.opento!=null){
+            if (items[room.opento].taken==false){
+                roomButton.classList.add("noOpen")
+            }
+            else{
+                roomButton.classList.add("roomButton")
+            }
+        }
+        else{
+            roomButton.class="roomButton"
+        }
+        
+        roomButton.class = "roomButton"
         roomButtons.append(roomButton);
     };
 
@@ -150,6 +163,7 @@ function handleClick(event){
                 }
                 else{
                     event.target.class = "noOpen"
+                    console.log(event.target.class)
                     render(currentRoom)
                 }
             }
