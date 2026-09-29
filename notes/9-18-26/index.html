@@ -1,0 +1,32 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+
+        <div id = "demoDiv">
+
+        </div>
+        <script>
+            console.log("hello world from inside html");
+            let foo = 9.4;
+            let bar = 3.6;
+            let sum = foo + bar;
+            console.log(sum);
+            
+            let demoDiv = document.querySelector("#demoDiv")
+            
+            
+            for (let i = 0;i<100;i++){
+                let randomNumber = Math.round(Math.random()*10);
+                console.log(randomNumber);
+                let newDiv = document.createElement("div");
+                newDiv.innerHTML = randomNumber;
+                demoDiv.append(newDiv)
+            }
+
+        </script>
+
+    </body>
+
+</html>
