@@ -19,7 +19,7 @@ function add_item(k,n,d,l,u){
 
 
 //Where I add all the rooms
-add_room("entry","Entry","The entry of the suite",["livingRoom","hallway"],"Go back to the entrance",null,null);
+add_room("entry","Entry","The entrance room of the suite",["livingRoom","hallway"],"Go back to the entrance",null,null);
 add_room("livingRoom","Living Room","the living room, it seems to be empty",["entry"],"Enter the Living room",null,null);
 add_room("hallway","Hallway","The hallway, the gateway to the suite",["entry","michaelRoom","sammyRoom","shower","bathroom","closet"],"Go to the hallway",null,null);
 add_room("michaelRoom","Michael and Obsa's Room","A beatuiful utopia",["hallway","obsa"],"Michael and Obsa's Room, it's not currently unlocked",null,"onecard")
@@ -46,19 +46,24 @@ function render(room){
     currentRoom = room
     let roomDiv = createElementWithID("div","roomDiv")
     
+    let textDiv = createElementWithID("div","textDiv")
+
     let roomHeader = createElementWithID("h1","roomHeader")
     roomHeader.innerHTML = room.name;
-    roomDiv.append(roomHeader);
+    textDiv.append(roomHeader);
+
+    
 
 
-    let roomDescription = createElementWithID("h3","roomDescription")
+    let roomDescription = createElementWithID("p","roomDescription")
     roomDescription.innerHTML = room.description;
-    roomDiv.append(roomDescription);
+    textDiv.append(roomDescription);
 
+    let roomButtons = createElementWithID("div","roomButtons")
     for (let i = 0;i<room.linkedRooms.length;i++){
         let roomButton = createElementWithID("button",room.linkedRooms[i])
         roomButton.innerHTML = rooms[room.linkedRooms[i]].label;
-        roomDiv.append(roomButton);
+        roomButtons.append(roomButton);
     };
 
     if (room.item!=null){
@@ -66,12 +71,15 @@ function render(room){
         if (item.taken==false){
             let itemButton = createElementWithID("button",item.name)
             itemButton.innerHTML = (item.label)
-            roomDiv.append(itemButton)
+            roomButtons.append(itemButton)
         }
     }
-    
+    roomDiv.append(textDiv)
+    roomDiv.append(roomButtons)
     rootDiv.append(roomDiv);
+    console.log(inventory)
     render_inventory()
+
 };
 
 
@@ -87,8 +95,8 @@ function render_inventory(){
 
 
     for (let i=0;i<inventory.length;i++){
-        let inventorySlot = createElementWithID("h3",(inventory[i]+"Slot"))
-        console.log(inventory[i])
+        let inventorySlot = createElementWithID("p",(inventory[i]+"Slot"))
+        inventorySlot.class="inventorySlot"
         inventorySlot.innerHTML = inventory[i]
         inventoryDiv.append(inventorySlot)
 
@@ -134,7 +142,10 @@ function handleClick(event){
             }
             else{
                 if (items[rooms[key].toopen].taken){
-                    useItem(items[rooms[key].toopen],rooms[key])
+                    if (items[rooms[key].toopen].used==false){
+                        useItem(items[rooms[key].toopen],rooms[key])
+                    }
+                    
                     render(rooms[event.target.id])
                 }
                 else{
