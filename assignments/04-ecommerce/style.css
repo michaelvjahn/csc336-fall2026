@@ -1,0 +1,121 @@
+body{
+    justify-content: center;
+    background-color: saddlebrown;
+}
+
+#root{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:20px;
+    
+    
+}
+
+#mainDiv{
+    display: flex;
+    flex-direction: row;
+    width:100%;
+    gap:20px;
+    background-color: burlywood;
+    border:8px;
+    border-style:solid;
+    border-color: peru;
+    border-radius: 10px;
+}
+
+#shopDiv{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    
+}
+
+#productsDiv{
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+
+.productDiv{
+    display: flex;
+    flex-direction: column;
+    background-color: burlywood;
+    justify-content: center;
+    align-items: center;
+    padding:10px;
+    gap:0px;
+    border:4px;
+    border-style:solid;
+    border-color: peru;
+    margin:2px;
+    
+}
+
+.productDiv > * {
+    margin: 2px;
+}
+
+.productImage{
+    width: 100px;
+    padding: 0px;
+    border:2px;
+    border-style: solid;
+    border-color: peru;
+}
+
+
+
+
+
+#cartDiv{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    
+}
+
+.cartProductDiv{
+    display: flex;
+    gap:10px;
+    width: 300px;
+    height:60px;
+    flex-direction:row;
+    justify-content: center;
+    place-items: center;
+    background-color: burlywood;
+    border:2px;
+    border-style:solid;
+    border-color: peru;
+
+}
+.cartProductDiv > *{
+    margin:5px
+}
+
+.deleteButton{
+    width: 20%;
+    
+    font-size: 27;
+    background-color: white;
+}
+
+.cartProductText{
+    width:60%
+}
+
+.cartProductImage{
+    width: 20%;
+    
+    background-color: burlywood;
+    border:2px;
+    border-style:solid;
+    border-color: peru;
+}
+
+
+
+
+
+
+

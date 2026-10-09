@@ -1,0 +1,46 @@
+<html>
+    <head>
+
+    </head>
+    <link rel="stylesheet" href="style.css">
+    
+
+    <body>
+        
+        <div id = "root"> 
+            <h1>Sock Sellers!</h1>
+            <div id = "mainDiv">
+                
+                <div id="shopDiv">
+                    <h2>Our Products</h2>
+                    <div id = "filterDiv">
+                        
+                        Sort by <select id = "sortSelect">
+                            <option value = "name a-z">Name (A-Z)</option>
+                            <option value = "name z-a">Name (Z-A)</option>
+                            <option value = "price l-h">Price (Low-High)</option>
+                            <option value = "price h-l">Name (High-Low)</option>
+                        </select> 
+                        Filter by <select id ="categorySelect">
+                            <option value = 'all'>All Products</option>
+                        </select>
+                        <button id = "addSelectedButton">Add Selected Items to Cart</button>
+                    </div>
+                    <div id = "productsDiv">
+                        
+                    </div>
+                </div>
+            
+                <div id = "cartDiv">
+                    <h2>Cart</h2>
+                </div>
+            </div>
+        </div>
+        <script src="script.js"></script>
+
+
+    </body>
+
+
+
+</html>
