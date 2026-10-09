@@ -6,6 +6,7 @@ let allProducts = [];
 let products=allProducts = []
 let categories = [];
 let cart = [];
+let cartTotal = 0;
 let selected = [];
 let selectedBoxes = [];
 
@@ -169,17 +170,38 @@ function render(){
 function addToCart(product){
     cart.push(product)
     renderInCart(product)
+    cartTotal+=product.price
+    let cartLabel = document.querySelector("#cartHeader")
+    if (cart.length>1){
+        cartLabel.innerHTML = ("Cart ("+String(cart.length)+" items) Total: $"+String(cartTotal))
+    }
+    else{
+        cartLabel.innerHTML = ("Cart (1 item) Total: $"+String(cartTotal))
+    }
+    
 }
 
 function removeFromCart(card,product){
     var newCart = []
+    let cartLabel = document.querySelector("#cartHeader")
     cart.forEach(element => {
         if (element!=product){
             newCart.push(element)
         }
     });
-    card.remove()
+    cartTotal=cartTotal-product.price
     cart = newCart
+    if (cart.length==1){
+        cartLabel.innerHTML = ("Cart (1 item) Total: $"+String(cartTotal))
+    }    
+    if (cart.length>2){
+        cartLabel.innerHTML = ("Cart ("+String(cart.length)+" items) Total: $"+String(cartTotal))    
+    }
+    if (cart.length==0){
+        cartLabel.innerHTML = "Cart"
+    }
+    card.remove()
+    
     
 }
 
@@ -210,12 +232,18 @@ function updateCategories(){
 
 
 
-addProduct("Socks",10,"some socks","https://babybeauandbelle.com/cdn/shop/files/baby-heirloom-boys-white-knee-socks-1251473008.jpg?v=1785422471&width=2400","not socks")
-addProduct("Socks 2",10000,"better socks","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9y4q6rUg9OU898rMyktjZBDByyznF-2DOfdEOlGHfZA&s=10","socks")
-addProduct("Socks 2",10000,"better socks","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9y4q6rUg9OU898rMyktjZBDByyznF-2DOfdEOlGHfZA&s=10","socks")
-addProduct("Socks 2",10000,"better socks","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9y4q6rUg9OU898rMyktjZBDByyznF-2DOfdEOlGHfZA&s=10","socks")
-addProduct("Socks 2",10000,"better socks","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9y4q6rUg9OU898rMyktjZBDByyznF-2DOfdEOlGHfZA&s=10","socks")
-addProduct("Socks 2",10000,"better socks","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9y4q6rUg9OU898rMyktjZBDByyznF-2DOfdEOlGHfZA&s=10","socks")
+addProduct("Socks",10,"some socks","https://babybeauandbelle.com/cdn/shop/files/baby-heirloom-boys-white-knee-socks-1251473008.jpg?v=1785422471&width=2400","Socks")
+addProduct("Socks 2",10000,"better socks","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9y4q6rUg9OU898rMyktjZBDByyznF-2DOfdEOlGHfZA&s=10","Socks")
+addProduct("Fancy socks",100,"luxury socks","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjoJiKrQESaY-zGVeyMuzXRAsfk9ESfM08Ge4UbKzsHQ&s=10","Socks")
+addProduct("Sock 1",2,"1 sock","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbztuAWozHMfsIo-poY_rLf_KmcC7tsO6JwakqyMl1wQ&s=10","Individual Socks")
+addProduct("Sock 2",11,"another sock","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbztuAWozHMfsIo-poY_rLf_KmcC7tsO6JwakqyMl1wQ&s=10","Individual Socks")
+addProduct("Socks I found",3,"Some socks I found outside","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrWVVyTPkgIeisyBAR1fHO30aXZVi2kX6Busq4qOMNkg&s=10","Used Socks")
+addProduct("Jordan Poole Socks",100000000,"Socks worn in game by Jordan Poole","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBW79rbzoSmRhLkbWacX5-wMg9aWX6_iJaXeMCuFwQjw&s","Used Socks")
+addProduct("Boxers",7,"A pair of boxers","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrMJtltXI9dfLFVHjdGgbbbXPFe4-Ql_xaaqN9ZMcfWg&s=10","Not Socks")
+addProduct("Sock 3",12,"a third, mysterious sock","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyb5sqL26Jbp3PI4kpEyeK-nvmII4RSTwW-KfNqjfbjA&s","Individual Socks")
+addProduct("No socks",0,"just feet","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQY5h8G3M1lLxynCOqRkjrI9Gd-nbjUAdlaMGUXE1vrqA&s=10","Not Socks")
+addProduct("Radioactive Socks",25,"glowing, radiated socks","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyTO980BqQ0hm3uvUeSwUiroX1-ncr3PTYgRruAwLX5w&s=10","Socks")
+addProduct("Gucci Socks",120,"Designer Socks","https://media.gucci.com/style/DarkGray_Center_0_0_490x490/1680717637/750705_4GADU_6566_002_100_0000_Light-round-interlocking-g-cotton-socks.jpg","Socks")
 updateCategories()
 
 render()

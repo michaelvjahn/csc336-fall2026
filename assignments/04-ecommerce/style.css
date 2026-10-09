@@ -7,8 +7,20 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap:20px;
+    color:peru;
+    font-weight: bold;
     
+    
+}
+
+h1{
+    background-color: burlywood;
+    border: 4x;
+    border-style: solid;
+    border-radius: 5px;
+    border-color: peru;
+    padding:25px;
+    font-weight: bold;
     
 }
 
@@ -31,17 +43,40 @@ body{
     
 }
 
+select{
+    background-color: peru;
+    border: 2px;
+    color:beige;
+    border-style: solid;
+    border-color: peru;
+}
+
 #productsDiv{
     display: flex;
     flex-wrap: wrap;
     
 }
+h3{
+    color: beige;
+    background-color: peru;
+    width:100%;
+}
+p{
+    color: brown;
+    
+}
+button{
+    background-color: peru;
+    color:beige;
+    border: 0px;
+}
+
 
 .productDiv{
     display: flex;
     flex-direction: column;
     background-color: burlywood;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     padding:10px;
     gap:0px;
@@ -49,6 +84,7 @@ body{
     border-style:solid;
     border-color: peru;
     margin:2px;
+    width:150px;
     
 }
 
@@ -58,12 +94,21 @@ body{
 
 .productImage{
     width: 100px;
+    height:100px;
     padding: 0px;
     border:2px;
     border-style: solid;
     border-color: peru;
 }
 
+.productTitle{
+    text-align: center;
+}
+
+.productDescription{
+    text-overflow: word-break;
+    text-align: center;
+}
 
 
 
@@ -83,10 +128,9 @@ body{
     flex-direction:row;
     justify-content: center;
     place-items: center;
-    background-color: burlywood;
-    border:2px;
-    border-style:solid;
-    border-color: peru;
+    background-color: peru;
+    
+    
 
 }
 .cartProductDiv > *{
@@ -95,13 +139,20 @@ body{
 
 .deleteButton{
     width: 20%;
-    
+    color:black;
     font-size: 27;
     background-color: white;
+    border: 2px;
+    border-style: solid;
+    border-color: burlywood;
 }
 
 .cartProductText{
-    width:60%
+    width:60%;
+    padding:5px;
+    text-align: center;
+    color:beige;
+    background-color: peru;
 }
 
 .cartProductImage{
