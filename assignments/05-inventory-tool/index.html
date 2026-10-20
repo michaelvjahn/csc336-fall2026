@@ -1,0 +1,67 @@
+<html>
+    <head>
+        <title>Sock Sellers!</title>
+    </head>
+    <link rel="stylesheet" href="style.css">
+    
+
+    <body>
+        
+        <div id = "root"> 
+            <img src ="SockSellers.png">
+            
+            <div id = "mainDiv">
+                
+                <div id="shopDiv">
+                    <img src = "Socks.png" id = "socksImage">
+                    
+                    <div id = "filterDiv">
+                        
+                        Sort by <select id = "sortSelect">
+                            <option value = "name a-z">Name (A-Z)</option>
+                            <option value = "name z-a">Name (Z-A)</option>
+                            <option value = "price l-h">Price (Low-High)</option>
+                            <option value = "price h-l">Name (High-Low)</option>
+                        </select> 
+                        Filter by <select id ="categorySelect">
+                            <option value = 'all'>All Products</option>
+                        </select>
+                        <button id = "addSelectedButton">Add Selected Items to Cart</button>
+                    </div>
+                    <div id = "productsDiv">
+                        
+                    </div>
+                </div>
+                
+                <div id = "cartDiv">
+                    <img src = "Cart.png">
+                    <h2 id = "cartHeader">Cart</h2>
+                </div>
+            </div>
+            <div id = "formDiv">
+                <form id = "productForm">
+                    <label for ="productNameInput">Name</label>
+                    <input name = "name" id = "productNameInput" type = "text" placeholder="Product Name">
+                    <label for = "productPriceInput">Price</label>
+                    <input name = "price" id = "productPriceInput" type = "number" step = 0.01 placeholder="Product Price" value = 0>
+                    <label for = "productDescriptionInput">Description</label>
+                    <textarea name = "description" id = "productDescriptionInput" placeholder="Product Description"></textarea>
+                    <label for = "productImageInput">Image</label>
+                    <input name = "image" id = "productImageInput" type = "url" placeholder="Product Image">
+                    <div id = formCategoryDiv>
+                        <label for = "productCategoryInput">Category</label>
+                        <select name = "category" id = "productCategoryInput"></select>
+                    </div>
+                    <input type ="submit">
+                </form>
+                <button id = "resetButton">Reset Products</button>
+            </div>
+        </div>
+        <script src="script.js"></script>
+
+
+    </body>
+
+
+
+</html>
