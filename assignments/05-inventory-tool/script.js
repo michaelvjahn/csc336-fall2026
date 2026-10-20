@@ -306,28 +306,29 @@ userForm.addEventListener("submit",(event)=>{
     renderProduct(newProduct)
     localStorage.setItem("products",JSON.stringify(allProducts))
     if (document.querySelector("#otherCategoryInput")!=null){
-        document.querySelector("#otherCategoryInput").remove()
-        document.querySelector("#otherCategoryLabel").remove()
+        document.querySelector("#otherCategoryInput").remove();
+        document.querySelector("#otherCategoryLabel").remove();
     }
     userForm.reset()
 })
 
 document.querySelector("#resetButton").addEventListener("click",(event)=>{
     localStorage.setItem("products",JSON.stringify(originalProducts));
-    allProducts = JSON.parse(localStorage.getItem("products"))
-    products= JSON.parse(localStorage.getItem("products"))
-    localStorage.setItem("categories",JSON.stringify(originalCategories))
-    categories = JSON.parse(localStorage.getItem("categories"))
+    allProducts = JSON.parse(localStorage.getItem("products"));
+    products= JSON.parse(localStorage.getItem("products"));
+    localStorage.setItem("categories",JSON.stringify(originalCategories));
+    categories = JSON.parse(localStorage.getItem("categories"));
+    updateCategories();
     render()
 })
 
 document.querySelector("#productCategoryInput").addEventListener("change", (event)=>{
     if (event.target.value=="Other"){
-        let newLabel =document.createElement("label")
+        let newLabel =document.createElement("label");
         newLabel.id = "otherCategoryLabel";
         newLabel.innerHTML = "Other Category";
-        newLabel.for = "otherCategoryInput"
-        let input = document.createElement("input")
+        newLabel.for = "otherCategoryInput";
+        let input = document.createElement("input");
         input.type = "text";
         input.name = "newCategory";
         input.id = "otherCategoryInput";
