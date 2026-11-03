@@ -119,6 +119,7 @@ document.querySelector("#newPokeForm").addEventListener("submit",(event)=>{
 
 //Resets the pokemon to the original pokemon I set
 async function resetPokemon(){
+    pokemonOn=0;
     pokemonList=[]
     setUpPokemon=[...originalPokemon]
     for (let i = 0;i<originalPokemon.length;i++){
@@ -131,6 +132,7 @@ async function resetPokemon(){
         poke.weight = poke.data.weight
         pokemonList.push(poke)
     }
+    
     localStorage.setItem("pokemon",JSON.stringify(setUpPokemon))
     
 }
