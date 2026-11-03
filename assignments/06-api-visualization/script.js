@@ -5,8 +5,20 @@ let pokemonOn = 0;
 //The list of the Pokemon in the Pokedex
 let pokemonList = []
 
+
 //The list of the IDs of the Pokemon in the dex
-let setUpPokemon = [255,50,158,70,108,138,163,202,209,265,270,279,298,328,519]
+let originalPokemon = [255,50,158,70,108,138,163,202,209,265,270,279,298,328,519]
+
+
+if (localStorage.getItem("pokemon")==null){
+    localStorage.setItem("pokemon",JSON.stringify(originalPokemon));
+}
+else{
+    setUpPokemon=JSON.parse(localStorage.getItem("pokemon"));
+}
+
+
+
 
 //The current x and y values of the pokemon list, used for adding new pokemon
 let y = 60;
@@ -70,7 +82,7 @@ async function setup(){
         poke.weight = poke.data.weight
         pokemonList.push(poke)
     }
-    
+    localStorage.setItem("pokemon",JSON.stringify(setUpPokemon))
 }
 
 
@@ -108,8 +120,9 @@ document.querySelector("#newPokeForm").addEventListener("submit",(event)=>{
 //Resets the pokemon to the original pokemon I set
 async function resetPokemon(){
     pokemonList=[]
-    for (let i = 0;i<setUpPokemon.length;i++){
-        let poke = new Pokemon(setUpPokemon[i])
+    setUpPokemon=[...originalPokemon]
+    for (let i = 0;i<originalPokemon.length;i++){
+        let poke = new Pokemon(originalPokemon[i])
         poke.data = await getPokemon(poke.id)
         poke.image = await loadImage(poke.data.sprites.front_default);
         poke.name = capitalize(poke.data.name);
@@ -118,6 +131,8 @@ async function resetPokemon(){
         poke.weight = poke.data.weight
         pokemonList.push(poke)
     }
+    localStorage.setItem("pokemon",JSON.stringify(setUpPokemon))
+    
 }
 
 //Creates a new pokemon
@@ -130,6 +145,9 @@ async function newPokemon(id) {
     poke.height = poke.data.height
     poke.weight = poke.data.weight
     pokemonList.push(poke)
+    setUpPokemon.push(id)
+    localStorage.setItem("pokemon",JSON.stringify(setUpPokemon))
+    
 }
 
 //Creates the visualization of the pokemon
