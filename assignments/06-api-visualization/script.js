@@ -8,7 +8,7 @@ let pokemonList = []
 
 //The list of the IDs of the Pokemon in the dex
 let originalPokemon = [255,50,158,70,108,138,163,202,209,265,270,279,298,328,519]
-
+let setUpPokemon = [...originalPokemon]
 
 if (localStorage.getItem("pokemon")==null){
     localStorage.setItem("pokemon",JSON.stringify(originalPokemon));
