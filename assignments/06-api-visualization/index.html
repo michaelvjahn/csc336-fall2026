@@ -4,10 +4,22 @@
         <title>Michael's Pokedex</title>
         
     </head>
+    <link rel="stylesheet" href="style.css">
     <body>
-        <button id ="leftButton"><</button>
-        <button id ="rightButton">></button>
+        <div id = "headerDiv">
+            <h1>Michael's Pokedex</h1>
+            <h2>A small Pokedex of the Pokemon I think look funny</h2>
+        </div>
+        <button id ="leftButton" onclick="leftButton()"><</button>
+        <button id ="rightButton"onclick="rightButton()">></button>
         use these buttons to switch pokemon
+        <form id ="newPokeForm">
+            Add new Pokemon! id:
+            <input type = "number" name="id" id="formID" step =1>
+            <input type = "submit" id = "submitButton" class="formButton">
+            <button id = "resetButton" class="formButton" onclick="resetPokemon()">Reset </button>
+        </form>
+        
     </body>
 
 

@@ -1,3 +1,36 @@
 button{
+    color: white;
+    background-color: red;
+    margin:20px;
+    width:60px;
+    height:60px;
+    border-radius: 40px;
+    border-color: white;
+}
+body{
+    background-color: black;
+    color:white;
     
+}
+#newPokemonDiv{
+    margin: 20px;
+}
+.formButton{
+    background-color: red;
+    color: white;
+    border: 4px;
+    border-color: white;
+    border-radius: 5px;
+}
+#resetButton{
+    width:60px;
+    height:20px;
+}
+
+
+
+#headerDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
