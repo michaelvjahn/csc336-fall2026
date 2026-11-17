@@ -17,7 +17,7 @@ let otherSelected = false;
 let dropDown = document.querySelector("#categorySelect")
 let sortDropDown = document.querySelector("#sortSelect")
 let addSelectedButton = document.querySelector("#addSelectedButton")
-dropDown.addEventListener("change",e=>{filterByCategory(dropDown.value);render()})
+dropDown.addEventListener("change",e=>{currentCategory = dropDown.value;render()})
 sortDropDown.addEventListener("change",e=>{sort(sortDropDown.value);render();console.log("sort changed")})
 addSelectedButton.addEventListener("click",e=>{addSelectedToCart()})
 
@@ -78,13 +78,18 @@ function addProduct(name,price,description,image,category){
 function filterByCategory(category){
     
     currentCategory = category
-    if (category=="All"){
+    if (category=="All" || category =="ALL"){
         products = allProducts
     }
     else{
         products = allProducts.filter(product => product.category==category)
     }
     sort(currentSort)
+    console.log("currentCateogry")
+    console.log(currentCategory)
+    console.log("cateogry")
+    console.log(category)
+    dropDown.value = category
     
 }
 
@@ -212,6 +217,7 @@ async function render(){
         allProducts.push(element)
         if (categories.includes(element.category)==false){
             categories.push(element.category)
+            updateCategories()
         }
     })
     newProducts = []
@@ -222,16 +228,16 @@ async function render(){
             allProducts.push(element)
             if (categories.includes(element.category)==false){
                 categories.push(element.category)
+                updateCategories()
             }
         })
     })
-    
     filterByCategory(currentCategory)
     products.forEach(element=>{
         renderProduct(element)
     })
     console.log(products)
-    updateCategories()
+    
     
 }
 
@@ -294,8 +300,8 @@ function updateCategories(){
         
     })
     dropDown.add(new Option("All","ALL"))
-    
     document.querySelector("#productCategoryInput").add(new Option("Other","Other"))
+    
 }
 
 
